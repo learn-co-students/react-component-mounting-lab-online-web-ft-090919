@@ -7,6 +7,14 @@ class Timer extends Component {
   };
 
   // add your code here
+  componentDidMount(){
+    this.interval = setInterval(this.clockTick, 1000)
+  }
+
+  componentWillUnmount(){
+    this.stopClock()
+    console.log("[+] Component is unmounting")
+  }
 
   render() {
     const { time, color } = this.state;
@@ -29,6 +37,8 @@ class Timer extends Component {
 
   stopClock = () => {
     clearInterval(this.interval);
+    console.log("[+] Cleared interval for: "+this.props.id)
+    
   };
 
   // for the 'x' button,
